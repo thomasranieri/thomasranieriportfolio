@@ -22,10 +22,10 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
     <h2>Projects</h2>
     <div class="project-cards">
       <article class="project-card">
-        <h2>ClassGen</h2>
+        <h3 class="project-title">ClassGen</h3>
         <div class="project-tech-list">
           <div class="project-tech">
-            <b>Backend</b>: Python, Flask, SQLAlchemy, Alembic, Postgres
+            <b>Backend</b>: Python, Flask, SQLAlchemy, Alembic, PostgreSQL
           </div>
           <div class="project-tech"><b>Frontend</b>: JavaScript, Vue, Webpack</div>
           <div class="project-tech">
@@ -43,15 +43,20 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
             users, technical support, etc. I migrated from Heroku to Google Cloud Platform (GCP) to
             reduce costs and improve performance.
           </p>
+          <p>
+            ClassGen now has 600+ users, storing 200k+ grades and 10k+ comments. I also receive lovely emails from
+            teachers who use the product and receive some <a href="https://www.facebook.com/classgenmarks/reviews">nice
+              reviews</a> too.
+          </p>
         </div>
       </article>
       <article class="project-card">
-        <h2>Unshuffler</h2>
+        <h3 class="project-title">Unshuffler</h3>
         <div class="project-tech-list">
           <div class="project-tech">
             <b>Backend</b>: TypeScript, Next.js, Prisma, SQLite, OpenAI API
           </div>
-          <div class="project-tech"><b>Frontend</b>: JavaScript, React</div>
+          <div class="project-tech"><b>Frontend</b>: React (JavaScript)</div>
           <div class="project-tech"><b>DevOps</b>: Vercel, OCI Compute VM, Sentry</div>
         </div>
         <div>
@@ -66,10 +71,10 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
         </div>
       </article>
       <article class="project-card">
-        <h2>Pulteney Canvas Toolbelt</h2>
+        <h3 class="project-title">Pulteney Canvas Toolbelt</h3>
         <div class="project-tech-list">
           <div class="project-tech">
-            <b>Frontend</b>: JavaScript, Vue, Vite, Canvas REST API, GraphQL, CSS
+            <b>Frontend</b>: Vue (JavaScript), Vite, Canvas REST API, GraphQL, CSS
           </div>
           <div class="project-tech"><b>DevOps</b>: GitHub Actions, Power Automate</div>
         </div>
@@ -86,11 +91,11 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
         </div>
       </article>
       <article class="project-card">
-        <h2>Speedy</h2>
+        <h3 class="project-title">Speedy</h3>
         <div class="project-tech-list">
           <div class="project-tech"><b>Backend</b>: Python, Microsoft SQL Server (T-SQL)</div>
           <div class="project-tech">
-            <b>Frontend</b>: JavaScript, Vue, Vite, Microsoft Graph API, Webpack
+            <b>Frontend</b>: Vue (JavaScript), Vite, Microsoft Graph API, Webpack
           </div>
         </div>
         <div>
@@ -100,27 +105,29 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
           </p>
           <p>
             Backend uses Python/Microsoft SQL (T-SQL) for data scraping and transformation,
-            JSON/SharePoint for storage and archival.
+            JSON/SharePoint for storage and archival. The data is stored securely within trusted organisational
+            infrastructure (SharePoint).
           </p>
           <p>
-            Frontend (single page application - SPA) uses Microsoft Graph API, JavaScript, Vue, Vite
-            (migrated from Webpack).
+            Speedy is an optional tool that spreads internally via word of mouth. And yet 88% of Year 7-12 teachers
+            choose use Speedy on a regular basis. This is a result of obsessive attention to user experience, with rapid
+            deployment, continuous iteration and high availability.
           </p>
         </div>
       </article>
       <article class="project-card">
-        <h2>Revolting</h2>
+        <h3 class="project-title">Revolting</h3>
         <div class="project-tech-list">
-          <div class="project-tech"><b>Frontend</b>: React (w/JavaScript), Vite</div>
+          <div class="project-tech"><b>Frontend</b>: React (JavaScript), Vite</div>
           <div class="project-tech"><b>Backend</b>: Netlify functions, OpenAI API, TypeScript</div>
           <div class="project-tech"><b>DevOps</b>: Netlify for CI/CD</div>
         </div>
         <div>
           <p>
             It's important to have fun. This is a silly project that I made to play with Netlify
-            functions, OpenAI API and React. It generates melodramatic propaganda speeches about a
-            topic of your choice.
+            functions, OpenAI API and React.
           </p>
+          <p>It generates melodramatic propaganda speeches about a topic of your choice.</p>
         </div>
       </article>
     </div>
@@ -179,6 +186,13 @@ main {
   margin: 10px;
   width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-title {
+  font-size: 2vmin;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .project-cards {
