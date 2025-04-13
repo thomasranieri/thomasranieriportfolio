@@ -29,7 +29,10 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
           </div>
           <div class="project-tech"><b>Frontend</b>: JavaScript, Vue, Webpack</div>
           <div class="project-tech">
-            <b>DevOps</b>: git, bash, Ubuntu, supervisor, Heroku, Google Cloud Platform
+            <b>DevOps</b>: git, bash, Ubuntu, supervisor, Sentry, Heroku, Google Cloud Platform
+          </div>
+          <div class="project-tech">
+            <b>Project management</b>: Trello (Kanban board)
           </div>
         </div>
         <div>
@@ -116,10 +119,36 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
         </div>
       </article>
       <article class="project-card">
+        <h3 class="project-title">PultBot</h3>
+        <div class="project-tech-list">
+          <div class="project-tech"><b>Backend</b>: Express (Node.js), SQLite, OpenAI API, LTI 1.1</div>
+          <div class="project-tech"><b>Frontend</b>: Vue (JavaScript), Vite, CSS</div>
+          <div class="project-tech"><b>DevOps</b>: GitHub Actions, Azure VM</div>
+        </div>
+        <div>
+          <p>
+            I developed a plugin for Canvas, which allows teachers to create their own secure chatbots for students.
+            Each chatbot is entirely designed by the teacher to target a skill, and teachers can view every
+            conversation.
+          </p>
+          <p>
+            This was a very rewarding project for me, because I could see the impact on students first-hand. On the week
+            of the first pilot launch, students found me in the yard to tell me how it had helped them to learn and
+            revise for their Year 12 biology test and to express their gratitude. Students were choosing to use this
+            revision strategy, even having in-depth conversations about how DNA works late into the night. Students who
+            missed the pilot lesson found out about it from their friends and started using it.
+          </p>
+          <p>
+            In truth, this surprised me &mdash; how this be useful for students when they already have ChatGPT at their
+            disposal? But it was the product of significant iteration, testing and user feedback.
+          </p>
+        </div>
+      </article>
+      <article class="project-card">
         <h3 class="project-title">Revolting</h3>
         <div class="project-tech-list">
-          <div class="project-tech"><b>Frontend</b>: React (JavaScript), Vite</div>
           <div class="project-tech"><b>Backend</b>: Netlify functions, OpenAI API, TypeScript</div>
+          <div class="project-tech"><b>Frontend</b>: React (JavaScript), Vite</div>
           <div class="project-tech"><b>DevOps</b>: Netlify for CI/CD</div>
         </div>
         <div>
