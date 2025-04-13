@@ -1,23 +1,25 @@
 <script setup>
 import { Icon } from '@iconify/vue'
+import HeroDownArrow from '@/components/HeroDownArrow.vue'
 </script>
 
 <template>
   <main>
-    <h1>Thomas Ranieri</h1>
+    <section class="hero">
+      <h1>Thomas Ranieri</h1>
+      <p class="hero-subtitle">I like to make things that help people.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/thomas-ranieri-dev/" class="social-link">
+          <Icon icon="mdi:linkedin" />
+        </a>
+        <a href="https://github.com/thomasranieri" class="social-link">
+          <Icon icon="mdi:github" />
+        </a>
+      </div>
+      <HeroDownArrow />
+    </section>
 
-    <p>I like to make things that help people.</p>
-
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/thomas-ranieri-dev/" class="social-link">
-        <Icon icon="mdi:linkedin" />
-      </a>
-      <a href="https://github.com/thomasranieri" class="social-link">
-        <Icon icon="mdi:github" />
-      </a>
-    </div>
-
-    <h1>Projects</h1>
+    <h2>Projects</h2>
     <div class="project-cards">
       <article class="project-card">
         <h2>ClassGen</h2>
@@ -125,11 +127,35 @@ import { Icon } from '@iconify/vue'
   </main>
 </template>
 <style scoped>
+h1 {
+  font-size: 10vmin;
+  margin-bottom: 20px;
+  margin-top: auto;
+}
+
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 40px;
+  height: 100vh;
+  width: 100%;
+  background-color: #0077b5;
+  color: white;
+}
+
+.hero-subtitle {
+  font-size: 3vmin;
+  margin-bottom: 20px;
 }
 
 .social-links {
@@ -138,11 +164,11 @@ main {
 }
 
 .social-link {
-  font-size: 60px;
-  color: black;
+  font-size: 100px;
+  color: white;
 
   &:hover {
-    color: #0077b5;
+    color: black;
   }
 }
 
