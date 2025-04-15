@@ -22,7 +22,9 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
     <h2>Projects</h2>
     <div class="project-cards">
       <article class="project-card">
-        <h3 class="project-title">ClassGen</h3>
+        <h3 class="project-title">
+          <a href="https://classgen.com/" target="_blank">ClassGen</a>
+        </h3>
         <div class="project-tech-list">
           <div class="project-tech">
             <b>Backend</b>: Python, Flask, SQLAlchemy, Alembic, PostgreSQL
@@ -54,7 +56,9 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
         </div>
       </article>
       <article class="project-card">
-        <h3 class="project-title">Unshuffler</h3>
+        <h3 class="project-title">
+          <a href="https://unshuffler.com/" target="_blank">Unshuffler</a>
+        </h3>
         <div class="project-tech-list">
           <div class="project-tech">
             <b>Backend</b>: TypeScript, Next.js, Prisma, SQLite, OpenAI API
@@ -145,7 +149,9 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
         </div>
       </article>
       <article class="project-card">
-        <h3 class="project-title">Revolting</h3>
+        <h3 class="project-title">
+          <a href="https://revolting.netlify.app/" target="_blank">Revolting</a>
+        </h3>
         <div class="project-tech-list">
           <div class="project-tech"><b>Backend</b>: Netlify functions, OpenAI API, TypeScript</div>
           <div class="project-tech"><b>Frontend</b>: React (JavaScript), Vite</div>
