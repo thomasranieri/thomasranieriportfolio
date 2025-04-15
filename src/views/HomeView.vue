@@ -196,7 +196,7 @@ main {
 }
 
 .hero-subtitle {
-  font-size: 3vmin;
+  font-size: 30px;
   margin-bottom: 20px;
 }
 
@@ -224,7 +224,7 @@ main {
 }
 
 .project-title {
-  font-size: 2vmin;
+  font-size: 20px;
   margin-bottom: 10px;
   margin-top: 10px;
   text-align: center;
