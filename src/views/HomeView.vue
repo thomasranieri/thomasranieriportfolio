@@ -15,6 +15,9 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
         <a href="https://github.com/thomasranieri" class="social-link">
           <Icon icon="mdi:github" />
         </a>
+        <a href="mailto:tom@classgen.com" class="social-link">
+          <Icon icon="mdi:email" />
+        </a>
       </div>
       <HeroDownArrow />
     </section>
@@ -169,6 +172,17 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
         </div>
       </article>
     </div>
+    <footer class="get-in-touch">
+      <a href="https://www.linkedin.com/in/thomas-ranieri-dev/" class="social-link">
+        <Icon icon="mdi:linkedin" /> thomas-ranieri-dev
+      </a>
+      <a href="https://github.com/thomasranieri" class="social-link">
+        <Icon icon="mdi:github" /> thomasranieri
+      </a>
+      <a href="mailto:tom@classgen.com" class="social-link">
+        <Icon icon="mdi:email" /> tom@classgen.com
+      </a>
+    </footer>
   </main>
 </template>
 <style scoped>
@@ -211,9 +225,12 @@ main {
 .social-link {
   font-size: 100px;
   color: white;
+  transition: 0.2s all;
+  transition-timing-function: cubic-bezier(0.25, -0.96, 0.65, 1.31);
 
   &:hover {
-    color: black;
+    color: #6cb6dd;
+    transform: scale(1.1);
   }
 }
 
@@ -238,5 +255,20 @@ main {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+}
+
+.get-in-touch {
+  background-color: #0077b5;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+}
+
+.get-in-touch .social-link {
+  font-size: 30px;
+  padding: 10px;
+  text-decoration: none;
 }
 </style>

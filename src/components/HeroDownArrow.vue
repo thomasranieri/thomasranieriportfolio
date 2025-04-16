@@ -7,7 +7,7 @@
 </template>
 <style scoped>
 .hero-down-arrow {
-  margin-bottom: 20px;
+  margin-bottom: 80px;
   margin-top: auto;
 }
 
