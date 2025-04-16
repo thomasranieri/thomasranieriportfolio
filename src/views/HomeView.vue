@@ -6,16 +6,16 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
 <template>
   <main>
     <section class="hero">
-      <h1 class="hero-animation-collider">Thomas Ranieri</h1>
-      <p class="hero-subtitle hero-animation-collider">I like to make things that help people.</p>
+      <h1>Thomas Ranieri</h1>
+      <p class="hero-subtitle">I like to make things that help people.</p>
       <div class="social-links">
-        <a href="https://www.linkedin.com/in/thomas-ranieri-dev/" class="social-link hero-animation-collider">
+        <a href="https://www.linkedin.com/in/thomas-ranieri-dev/" class="social-link">
           <Icon icon="mdi:linkedin" />
         </a>
-        <a href="https://github.com/thomasranieri" class="social-link hero-animation-collider">
+        <a href="https://github.com/thomasranieri" class="social-link">
           <Icon icon="mdi:github" />
         </a>
-        <a href="mailto:tom@classgen.com" class="social-link hero-animation-collider">
+        <a href="mailto:tom@classgen.com" class="social-link">
           <Icon icon="mdi:email" />
         </a>
       </div>
@@ -183,169 +183,8 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
         <Icon icon="mdi:email" /> tom@classgen.com
       </a>
     </footer>
-    <canvas class="hero-animation-persistent" ref="hero-animation-persistent"></canvas>
-    <canvas class="hero-animation-cleared" ref="hero-animation-cleared"></canvas>
   </main>
 </template>
-<script>
-function calculateCollision(particle, box, particleRadius) {
-  var t_min_x, t_max_x, t_min_y, t_max_y, time_enter, time_exit;
-  var flipA = false;
-  var flipB = false;
-  var flipC = false;
-  var flipD = false;
-  t_min_x = (box.x - particle.x - particleRadius) / particle.vx;
-  t_max_x = (box.x + box.width - particle.x + particleRadius) / particle.vx;
-  t_min_y = (box.y - particle.y - particleRadius) / particle.vy;
-  t_max_y = (box.y + box.height - particle.y + particleRadius) / particle.vy;
-  if (t_min_x > t_max_x) {
-    [t_min_x, t_max_x] = [t_max_x, t_min_x];
-    flipA = true;
-  }
-  if (t_min_y > t_max_y) {
-    flipB = true;
-    [t_min_y, t_max_y] = [t_max_y, t_min_y];
-  }
-  if (t_min_x < t_min_y) {
-    flipC = true;
-    time_enter = t_min_y;
-  } else {
-    time_enter = t_min_x;
-  }
-  if (t_max_x < t_max_y) {
-    flipD = true;
-    time_exit = t_max_x;
-  } else {
-    time_exit = t_max_y;
-  }
-  if (time_enter > time_exit) {
-    return false;
-  }
-  if (time_exit < 0) {
-    return false;
-  }
-  return { time_enter, flipA, flipB, flipC, flipD };
-}
-
-const PARTICLE_COUNT = 100;
-const PARTICLE_RADIUS = 50;
-
-export default {
-  data() {
-    return {
-      particles: [],
-      lastParticleDate: null,
-    }
-  },
-  mounted() {
-    this.canvasPersistent = this.$refs['hero-animation-persistent'];
-    this.canvasCleared = this.$refs['hero-animation-cleared'];
-    this.ctxCleared = this.canvasCleared.getContext('2d');
-    this.ctxPersistent = this.canvasPersistent.getContext('2d');
-    this.canvasCleared.width = window.innerWidth;
-    this.canvasCleared.height = window.innerHeight;
-    this.particles = [];
-    window.requestAnimationFrame(this.render);
-  },
-  methods: {
-    addParticle() {
-      var x, y;
-      var edge = ['top', 'bottom', 'left', 'right'][Math.floor(Math.random() * 4)];
-      switch (edge) {
-        case 'top':
-          x = Math.random() * this.canvasPersistent.width;
-          y = -PARTICLE_RADIUS;
-          break;
-        case 'bottom':
-          x = Math.random() * this.canvasPersistent.width;
-          y = this.canvasPersistent.height + PARTICLE_RADIUS;
-          break;
-        case 'left':
-          x = -PARTICLE_RADIUS;
-          y = Math.random() * this.canvasPersistent.height;
-          break;
-        case 'right':
-          x = this.canvasPersistent.width + PARTICLE_RADIUS;
-          y = Math.random() * this.canvasPersistent.height;
-          break;
-      }
-      var vx = (Math.random() - 0.5) * 3;
-      var vy = (Math.random() - 0.5) * 3;
-      this.particles.push({
-        x, y, vx, vy
-      });
-      this.lastParticleDate = new Date();
-    },
-    render() {
-      this.canvasPersistent.width = document.body.offsetWidth;
-      this.canvasPersistent.height = document.body.offsetHeight;
-      var timeSinceLastParticle = new Date() - this.lastParticleDate;
-      if (this.particles.length < PARTICLE_COUNT && timeSinceLastParticle > 1000) {
-        this.addParticle();
-      }
-      var colliders = document.querySelectorAll('.hero-animation-collider');
-      this.ctxCleared.clearRect(0, 0, this.ctxCleared.canvas.width, this.ctxCleared.canvas.height);
-      this.ctxPersistent.beginPath();
-      this.ctxPersistent.fillStyle = 'rgba(0, 119, 181, 1)';
-      this.ctxPersistent.globalCompositeOperation = 'source-over';
-      this.ctxPersistent.fillRect(0, 0, this.ctxPersistent.canvas.width, this.ctxPersistent.canvas.height);
-      this.ctxPersistent.fill();
-      this.ctxPersistent.fillStyle = 'rgba(255, 255, 255, 1)';
-
-      var colliderBoxes = [];
-      for (let collider of colliders) {
-        let rect = collider.getBoundingClientRect();
-        let box = {
-          x: rect.left + window.scrollX,
-          y: rect.top + window.scrollY,
-          width: rect.width,
-          height: rect.height,
-        };
-        colliderBoxes.push(box);
-      }
-      for (let particle of this.particles) {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-
-        if (particle.x < PARTICLE_RADIUS) {
-          particle.vx = Math.abs(particle.vx);
-        }
-        if (particle.x > this.canvasPersistent.width - PARTICLE_RADIUS) {
-          particle.vx = -Math.abs(particle.vx);
-        }
-        if (particle.y < PARTICLE_RADIUS) {
-          particle.vy = Math.abs(particle.vy);
-        }
-        if (particle.y > this.canvasPersistent.height - PARTICLE_RADIUS) {
-          particle.vy = -Math.abs(particle.vy);
-        }
-
-        for (let box of colliderBoxes) {
-
-          let timeToCollision = calculateCollision(particle, box, PARTICLE_RADIUS);
-          if (!timeToCollision) {
-            continue;
-          }
-          if (timeToCollision.time_enter < 1) {
-            if (timeToCollision.flipC) {
-              particle.vy = timeToCollision.flipB ? Math.abs(particle.vy) : -Math.abs(particle.vy);
-            } else {
-              particle.vx = timeToCollision.flipA ? Math.abs(particle.vx) : -Math.abs(particle.vx);
-            }
-          }
-        }
-
-        this.ctxPersistent.fillStyle = '#6cb6dd';
-        this.ctxPersistent.beginPath();
-        this.ctxPersistent.arc(particle.x, particle.y, PARTICLE_RADIUS, 0, Math.PI * 2);
-        this.ctxPersistent.fill();
-
-      }
-      window.requestAnimationFrame(this.render);
-    }
-  }
-}
-</script>
 <style scoped>
 h1 {
   font-size: 10vmin;
@@ -369,22 +208,13 @@ main {
   margin-bottom: 40px;
   height: 100vh;
   width: 100%;
+  background-color: #0077b5;
   color: white;
 }
 
 .hero-subtitle {
   font-size: 30px;
   margin-bottom: 20px;
-}
-
-.hero-animation-persistent,
-.hero-animation-cleared {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
 }
 
 .social-links {
