@@ -397,6 +397,7 @@ main {
   color: white;
   transition: 0.2s all;
   transition-timing-function: cubic-bezier(0.25, -0.96, 0.65, 1.31);
+  height: 1em;
 
   &:hover {
     color: #6cb6dd;
@@ -434,11 +435,16 @@ main {
   flex-direction: row;
   gap: 20px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .get-in-touch .social-link {
   font-size: 30px;
   padding: 10px;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: start;
 }
 </style>
