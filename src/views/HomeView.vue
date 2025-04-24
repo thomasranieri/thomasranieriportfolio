@@ -171,6 +171,26 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
           <p>It generates melodramatic propaganda speeches about a topic of your choice.</p>
         </div>
       </article>
+      <article class="project-card">
+        <h3 class="project-title">
+          RideOn compliance system
+        </h3>
+        <div class="project-tech-list">
+          <div class="project-tech"><b>Backend</b>: PHP, MySQL</div>
+          <div class="project-tech"><b>Frontend</b>: JavaScript, jQuery</div>
+        </div>
+        <div>
+          <p>Designed and developed an AS3533 compliance tracking system for RideOn. This system was used regularly by
+            60 engineers to maintain thousands of rides, with more than 20,000 inspections logged from 2012 to 2016.</p>
+          <p>This project significantly improved operational efficiency and safety compliance compared to the previous
+            paper-based solution.</p>
+          <p>The system itself took me approximately 40 hours to make, but the careful planning, agile development
+            approach and thorough testing ensured that it operated with minimal maintenance for years after deployment.
+          </p>
+          <p>Maintenance engineers appreciated the mobile-first responsive design and user experience as they used the
+            PWA on mobile devices in the field.</p>
+        </div>
+      </article>
     </div>
     <footer class="get-in-touch">
       <a href="https://www.linkedin.com/in/thomas-ranieri-dev/" class="social-link">
