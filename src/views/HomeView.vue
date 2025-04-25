@@ -117,10 +117,9 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
             organisational infrastructure (SharePoint).
           </p>
           <p>
-            Speedy is an optional tool that spreads internally via word of mouth. And yet 88% of our
-            Year 7-12 teachers choose use Speedy on a regular basis. This is a result of obsessive
-            attention to user experience, with rapid deployment, continuous iteration and high
-            availability.
+            Speedy is regularly used by 88% of our Year 7-12 teachers and this adoption is entirely through word of
+            mouth. This is a result of obsessive attention to user experience, with rapid deployment, continuous
+            iteration and high availability.
           </p>
         </div>
       </article>
