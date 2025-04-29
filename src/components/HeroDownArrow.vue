@@ -1,10 +1,21 @@
 <template>
-  <svg height="100" width="100" viewBox="0 0 20 20" class="hero-down-arrow">
-    <polyline points="0,0  10,10, 20,0" />
-    <polyline points="0,0  10,10, 20,0" style="animation-delay: 1000ms" />
-    <polyline points="0,0  10,10, 20,0" style="animation-delay: 2000ms" />
-  </svg>
+  <a :href="href" class="hero-down-arrow">
+    <svg height="100" width="100" viewBox="0 0 20 20">
+      <polyline points="0,0  10,10, 20,0" />
+      <polyline points="0,0  10,10, 20,0" style="animation-delay: 1000ms" />
+      <polyline points="0,0  10,10, 20,0" style="animation-delay: 2000ms" />
+    </svg>
+  </a>
 </template>
+<script>
+export default {
+  props: {
+    href: {
+      type: String
+    },
+  }
+};
+</script>
 <style scoped>
 .hero-down-arrow {
   margin-bottom: 80px;

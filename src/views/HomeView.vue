@@ -19,10 +19,10 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
           <Icon icon="mdi:email" />
         </a>
       </div>
-      <HeroDownArrow />
+      <HeroDownArrow href="#projects" />
     </section>
 
-    <h2>Projects</h2>
+    <h2 id="projects">Projects</h2>
     <div class="project-cards">
       <article class="project-card">
         <h3 class="project-title">
