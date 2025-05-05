@@ -11,10 +11,10 @@
 export default {
   props: {
     href: {
-      type: String
+      type: String,
     },
-  }
-};
+  },
+}
 </script>
 <style scoped>
 .hero-down-arrow {
