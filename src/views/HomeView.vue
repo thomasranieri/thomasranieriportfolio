@@ -1,6 +1,7 @@
 <script setup>
 import { Icon } from '@iconify/vue'
 import HeroDownArrow from '@/components/HeroDownArrow.vue'
+import vIntersect from '@/directives/intersect.js'
 </script>
 
 <template>
@@ -24,7 +25,7 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
 
     <h2 id="projects">Projects</h2>
     <div class="project-cards">
-      <article class="project-card">
+      <article class="project-card" v-intersect="'in-view'">
         <h3 class="project-title">
           <a href="https://classgen.com/" target="_blank">ClassGen</a>
         </h3>
@@ -56,7 +57,7 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
           </p>
         </div>
       </article>
-      <article class="project-card">
+      <article class="project-card" v-intersect="'in-view'">
         <h3 class="project-title">
           <a href="https://unshuffler.com/" target="_blank">Unshuffler</a>
         </h3>
@@ -78,7 +79,7 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
           </p>
         </div>
       </article>
-      <article class="project-card">
+      <article class="project-card" v-intersect="'in-view'">
         <h3 class="project-title">Pulteney Canvas Toolbelt</h3>
         <div class="project-tech-list">
           <div class="project-tech">
@@ -98,7 +99,7 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
           </p>
         </div>
       </article>
-      <article class="project-card">
+      <article class="project-card" v-intersect="'in-view'">
         <h3 class="project-title">Speedy</h3>
         <div class="project-tech-list">
           <div class="project-tech"><b>Backend</b>: Python, Microsoft SQL Server (T-SQL)</div>
@@ -117,13 +118,13 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
             organisational infrastructure (SharePoint).
           </p>
           <p>
-            Speedy is regularly used by 88% of our Year 7-12 teachers and this adoption is entirely through word of
-            mouth. This is a result of obsessive attention to user experience, with rapid deployment, continuous
-            iteration and high availability.
+            Speedy is regularly used by 88% of our Year 7-12 teachers and this adoption is entirely
+            through word of mouth. This is a result of obsessive attention to user experience, with
+            rapid deployment, continuous iteration and high availability.
           </p>
         </div>
       </article>
-      <article class="project-card">
+      <article class="project-card" v-intersect="'in-view'">
         <h3 class="project-title">PultBot</h3>
         <div class="project-tech-list">
           <div class="project-tech">
@@ -153,7 +154,7 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
           </p>
         </div>
       </article>
-      <article class="project-card">
+      <article class="project-card" v-intersect="'in-view'">
         <h3 class="project-title">
           <a href="https://revolting.netlify.app/" target="_blank">Revolting</a>
         </h3>
@@ -170,24 +171,31 @@ import HeroDownArrow from '@/components/HeroDownArrow.vue'
           <p>It generates melodramatic propaganda speeches about a topic of your choice.</p>
         </div>
       </article>
-      <article class="project-card">
-        <h3 class="project-title">
-          RideOn compliance system
-        </h3>
+      <article class="project-card" v-intersect="'in-view'">
+        <h3 class="project-title">RideOn compliance system</h3>
         <div class="project-tech-list">
           <div class="project-tech"><b>Backend</b>: PHP, MySQL</div>
           <div class="project-tech"><b>Frontend</b>: JavaScript, jQuery</div>
         </div>
         <div>
-          <p>Designed and developed an AS3533 compliance tracking system for RideOn. This system was used regularly by
-            60 engineers to maintain thousands of rides, with more than 20,000 inspections logged from 2012 to 2016.</p>
-          <p>This project significantly improved operational efficiency and safety compliance compared to the previous
-            paper-based solution.</p>
-          <p>The system itself took me approximately 40 hours to make, but the careful planning, agile development
-            approach and thorough testing ensured that it operated with minimal maintenance for years after deployment.
+          <p>
+            Designed and developed an AS3533 compliance tracking system for RideOn. This system was
+            used regularly by 60 engineers to maintain thousands of rides, with more than 20,000
+            inspections logged from 2012 to 2016.
           </p>
-          <p>Maintenance engineers appreciated the mobile-first responsive design and user experience as they used the
-            PWA on mobile devices in the field.</p>
+          <p>
+            This project significantly improved operational efficiency and safety compliance
+            compared to the previous paper-based solution.
+          </p>
+          <p>
+            The system itself took me approximately 40 hours to make, but the careful planning,
+            agile development approach and thorough testing ensured that it operated with minimal
+            maintenance for years after deployment.
+          </p>
+          <p>
+            Maintenance engineers appreciated the mobile-first responsive design and user experience
+            as they used the PWA on mobile devices in the field.
+          </p>
         </div>
       </article>
     </div>
@@ -261,6 +269,16 @@ main {
   margin: 10px;
   width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+}
+
+.project-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.5s ease-in-out,
+    transform 0.5s ease-in-out;
 }
 
 .project-title {
