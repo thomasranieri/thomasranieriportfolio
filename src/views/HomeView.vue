@@ -2,11 +2,13 @@
 import { Icon } from '@iconify/vue'
 import HeroDownArrow from '@/components/HeroDownArrow.vue'
 import vIntersect from '@/directives/intersect.js'
+import MoonBackground from '@/components/MoonBackground.vue';
 </script>
 
 <template>
   <main>
     <section class="hero">
+      <MoonBackground />
       <h1>Thomas Ranieri</h1>
       <p class="hero-subtitle">I like to make things that help people.</p>
       <div class="social-links">
@@ -235,8 +237,9 @@ main {
   margin-bottom: 40px;
   height: 100vh;
   width: 100%;
-  background-color: #0077b5;
   color: white;
+  -webkit-text-stroke: #0077b5 10px;
+  paint-order: stroke fill;
 }
 
 .hero-subtitle {
