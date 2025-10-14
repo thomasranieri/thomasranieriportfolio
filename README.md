@@ -1,35 +1,7 @@
-# thomasranieriportfolio
+# thomasranieri.dev
 
-This template should help get you started developing with Vue 3 in Vite.
+This is the repo for my portfolio website: [thomasranieri.dev](https://thomasranieri.dev/)
 
-## Recommended IDE Setup
+It is nothing flashy, just like this README.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Standard commands apply for setting up (`npm install`), development (`npm run dev`) and building for production (`npm run build`)
