@@ -12,13 +12,17 @@ export default {
             mouseX: null,
             mouseY: null,
             hasMouse: false,
+            mouseHandler: null,
+            rafId: null,
             moonSpacing: 200
         };
     },
     mounted() {
         this.canvas = this.$el;
         this.ctx = this.canvas.getContext('2d');
-        requestAnimationFrame(this.drawMoons);
+        // bind drawMoons so we can reference the same function when cancelling
+        this.drawMoons = this.drawMoons.bind(this);
+        this.rafId = requestAnimationFrame(this.drawMoons);
 
         this.createMoons();
         this.onResize();
@@ -26,16 +30,31 @@ export default {
         window.addEventListener('resize', this.onResize);
         if (window.matchMedia("(hover: hover)").matches) {
             this.hasMouse = true;
-            window.addEventListener('mousemove', (event) => {
+            // store a reference so we can remove it in beforeUnmount
+            this.mouseHandler = (event) => {
                 this.mouseX = event.clientX + window.scrollX;
                 this.mouseY = event.clientY + window.scrollY;
-            });
+            };
+            window.addEventListener('mousemove', this.mouseHandler);
+        }
+    },
+    beforeUnmount() {
+        // cancel the animation frame and remove listeners to avoid leaks
+        if (this.rafId != null) {
+            cancelAnimationFrame(this.rafId);
+            this.rafId = null;
+        }
+        window.removeEventListener('resize', this.onResize);
+        if (this.mouseHandler) {
+            window.removeEventListener('mousemove', this.mouseHandler);
+            this.mouseHandler = null;
         }
     },
     methods: {
         onResize() {
             this.canvas.width = window.innerWidth;
             this.canvas.height = window.innerHeight;
+            // Set a minimum spacing, but make it scale with screen size
             this.moonSpacing = Math.max(140, window.innerWidth / 10);
             this.createMoons();
         },
@@ -45,6 +64,7 @@ export default {
             var xCount = Math.ceil(this.canvas.width / this.moonSpacing);
             var overallWidth = this.moonSpacing * xCount;
             var startX = (this.canvas.width - overallWidth) / 2;
+            // stagger every other column
             for (var x = startX; x / this.moonSpacing < xCount; x += this.moonSpacing) {
                 startY = (startY + this.moonSpacing / 2) % this.moonSpacing;
                 for (var y = startY; y < this.canvas.height; y += this.moonSpacing) {
@@ -68,8 +88,9 @@ export default {
             }
 
 
-            var focusX = this.mouseX || canvas.width / 2;
-            var focusY = this.mouseY || canvas.height / 2;
+            // allow 0 coordinate values (use nullish coalescing)
+            var focusX = (this.mouseX ?? canvas.width / 2);
+            var focusY = (this.mouseY ?? canvas.height / 2);
 
             this.moons.forEach(moon => {
                 var moonPhase = 0;
@@ -80,12 +101,17 @@ export default {
                 moonPhase += 0.25; // full moon
 
 
+                // animate the moons if there's no mouse
                 if (!this.hasMouse) {
                     moonPhase += time / 1000 / 8;
                 }
 
                 var quarter = Math.floor(moonPhase * 4) % 4;
                 var quarterProgress = moonPhase * 4 - Math.floor(moonPhase * 4);
+
+                // guard against zero which would cause divisions by zero later
+                var epsilon = 1e-6;
+                if (quarterProgress < epsilon) quarterProgress = epsilon;
 
                 var gibbous = quarter > 1;
                 var flipped = quarter % 2 === 1;
